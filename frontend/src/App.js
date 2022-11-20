@@ -1,30 +1,64 @@
+/** @format */
+
 import "./App.css";
 import Footer from "./Footer";
 import LeftPanel from "./LeftPanel";
 import Navbar from "./Navbar";
 import Stage from "./Stage";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import {DndProvider} from "react-dnd";
+import {HTML5Backend} from "react-dnd-html5-backend";
 import Dnd from "./Dnd";
 import SankeyChart from "./SankeyChart";
-import { useState } from "react";
+import {useState} from "react";
 
 function App() {
-  const [selectedStage, setSelectedStage] = useState("");
-  return (
-    // <DndProvider backend={HTML5Backend}>
-    <div className="App">
-      <Navbar />
+	const [selectedStages, setSelectedStages] = useState([]);
+	const addIndicatorToStage = (category, indicator) => {
+		console.log("Adding " + indicator + " to stages: " + selectedStages);
+		if (!selectedStages.length) {
+			setSelectedStages([
+				{
+					category,
+					indicator,
+				},
+			]);
+		} else if (
+			!selectedStages.some((existingIndicator) => existingIndicator.indicator === indicator)
+		) {
+			if (
+				selectedStages.some((existingIndicator) => existingIndicator.category !== category)
+			) {
+				setSelectedStages([
+					{
+						category,
+						indicator,
+					},
+				]);
+			} else {
+				setSelectedStages([
+					...selectedStages,
+					{
+						category,
+						indicator,
+					},
+				]);
+			}
+		}
+	};
+	return (
+		// <DndProvider backend={HTML5Backend}>
+		<div className="App">
+			<Navbar />
 
-      <div className="body-wrapper">
-        <LeftPanel setSelectedStage={setSelectedStage} />
-        <Stage selectedStage={selectedStage} />
-      </div>
-      <SankeyChart />
-      <Footer />
-    </div>
-    // </DndProvider>
-  );
+			<div className="body-wrapper">
+				<LeftPanel addIndicatorToStage={addIndicatorToStage} />
+				<Stage selectedStages={selectedStages} />
+			</div>
+			<SankeyChart />
+			<Footer />
+		</div>
+		// </DndProvider>
+	);
 }
 
 export default App;
