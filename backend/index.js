@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import timeSeriesRoutes from "./src/routes/fetchTimeSeriesData.routes.js";
 import sankeyPlotRoutes from "./src/routes/fetchSankeyPlotData.routes.js";
+import yieldPlotRoutes from "./src/routes/fetchYieldPlotData.routes.js";
 
 const user = "testUser";
 const password = "testPass";
@@ -35,6 +36,7 @@ app.use(
 
 app.use(timeSeriesRoutes);
 app.use(sankeyPlotRoutes);
+app.use(yieldPlotRoutes);
 
 try {
 	mongoose.connect(uri, {
