@@ -1,4 +1,6 @@
-import { React, useState } from "react";
+/** @format */
+
+import {React, useState} from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -7,10 +9,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import { indicatorMappings } from "./utils.py/constants";
-import { Typography } from "@mui/material";
+import {indicatorMappings} from "./utils.py/constants";
+import {Typography} from "@mui/material";
 
-const LeftPanel = ({ setSelectedStage }) => {
+const LeftPanel = ({addIndicatorToStage}) => {
 	return (
 		<div className="panel-wrapper">
 			<div className="panel-dropdowns">
@@ -36,8 +38,13 @@ const LeftPanel = ({ setSelectedStage }) => {
 																	m: 1,
 																}}
 																id={indicator.key}
+																data-category={category.key}
 																onClick={(e) => {
-																	setSelectedStage(e.target.id);
+																	console.log(e);
+																	addIndicatorToStage(
+																		e.target.dataset.category,
+																		e.target.id
+																	);
 																}}>
 																{indicator.text}
 															</Typography>
