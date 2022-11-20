@@ -12,6 +12,7 @@ import { useState } from "react";
 import SankeyChart from "./SankeyChart";
 import { countries } from "react-circle-flags";
 import YearSlider from "./YearSlider";
+import Annotations from "./Annotations";
 
 function App() {
   const [persona, setPersona] = useState(true);
@@ -21,9 +22,28 @@ function App() {
     setPersona(!persona);
   };
 
+  const [annotation, setAnnotation] = useState();
+
+  const [aList, setAList] = useState([]);
+
+  const addAnnotation = () => {
+    setAList([...aList, annotation]);
+    setAnnotation("");
+    handleClose();
+  };
+  const handleAnnotation = (newValue) => {
+    console.log(newValue);
+    setAnnotation(newValue);
+  };
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [country, setCountry] = useState("USA");
   const [selectedStages, setSelectedStages] = useState([]);
   const [sliderValue, setSliderValue] = useState([1960, 2021]);
+
   const handleSliderChange = (event, newValue) => {
     setSliderValue(newValue);
   };
@@ -98,6 +118,19 @@ function App() {
           sliderValue={sliderValue}
           handleSliderChange={handleSliderChange}
         />
+        {persona === false ? (
+          <Annotations
+            aList={aList}
+            annotation={annotation}
+            handleAnnotation={handleAnnotation}
+            addAnnotation={addAnnotation}
+            show={show}
+            handleShow={handleShow}
+            handleClose={handleClose}
+          />
+        ) : (
+          <></>
+        )}
       </div>
       {/* <SankeyChart /> */}
       {/* <Footer /> */}

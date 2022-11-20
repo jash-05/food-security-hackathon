@@ -65,7 +65,7 @@ const Navbar = (props) => {
           Food Security
         </div>
         <Stack direction="row" spacing={1} alignItems="center">
-          <Typography>
+          <Typography sx={{ fontSize: "12px" }}>
             Food Security<br></br> Researcher
           </Typography>
           <AntSwitch
@@ -73,7 +73,7 @@ const Navbar = (props) => {
             inputProps={{ "aria-label": "ant design" }}
             onChange={handlePersona()}
           />
-          <Typography>
+          <Typography sx={{ fontSize: "12px" }}>
             Government
             <br /> Agent
           </Typography>
