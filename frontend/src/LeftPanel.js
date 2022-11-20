@@ -8,9 +8,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import { indicatorMappings } from "./utils.py/constants";
+import { Typography } from "@mui/material";
 
-const LeftPanel = () => {
-	const [selectedStage, setSelectedStage] = useState("");
+const LeftPanel = ({ setSelectedStage }) => {
 	return (
 		<div className="panel-wrapper">
 			<div className="panel-dropdowns">
@@ -18,38 +18,32 @@ const LeftPanel = () => {
 					{indicatorMappings.map((category) => {
 						return (
 							<Accordion.Item eventKey={category.eventKey}>
-								<Accordion.Header>
-									{category.text}
-								</Accordion.Header>
+								<Accordion.Header>{category.text}</Accordion.Header>
 								<Accordion.Body>
 									<Box
 										sx={{
 											width: "100%",
 											maxWidth: 380,
 											bgcolor: "background.paper",
-										}}
-									>
-										<nav
-											aria-label={category.key + "-items"}
-										>
+										}}>
+										<nav aria-label={category.key + "-items"}>
 											<List>
-												{category.indicators.map(
-													(indicator) => {
-														return (
-															<ListItem
-																disablePadding
-															>
-																<ListItemButton>
-																	<ListItemText
-																		primary={
-																			indicator.text
-																		}
-																	/>
-																</ListItemButton>
-															</ListItem>
-														);
-													}
-												)}
+												{category.indicators.map((indicator) => {
+													return (
+														<ListItem disablePadding>
+															<Typography
+																sx={{
+																	m: 1,
+																}}
+																id={indicator.key}
+																onClick={(e) => {
+																	setSelectedStage(e.target.id);
+																}}>
+																{indicator.text}
+															</Typography>
+														</ListItem>
+													);
+												})}
 											</List>
 										</nav>
 									</Box>
