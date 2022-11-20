@@ -27,7 +27,6 @@ export class FetchTimeSeriesData {
 		const startYear = parseInt(req.query.startYear);
 		const endYear = parseInt(req.query.endYear);
 		const country = req.query.country;
-		console.log(collection, startYear, endYear, country);
 
 		try {
 			if (collection == "Agri_Forestry_Fishing") {
