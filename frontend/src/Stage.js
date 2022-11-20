@@ -7,6 +7,7 @@ import {Banana} from "./components/banana";
 import {Mango} from "./components/mango";
 import {Walnut} from "./components/walnut";
 import SankeyChart from "./SankeyChart";
+import Yield from "./Yield";
 
 const Stage = ({country, selectedStages, sliderValue, handleSliderChange}) => {
 	useEffect(() => {
@@ -30,7 +31,13 @@ const Stage = ({country, selectedStages, sliderValue, handleSliderChange}) => {
 				) : selectedStages.at(-1).category === "imports" ? (
 					<Imports country={selectedStages.at(-1).indicator} />
 				) : selectedStages.at(-1).category === "yield" ? (
-					""
+					<>
+						<YearSlider
+							sliderValue={sliderValue}
+							handleSliderChange={handleSliderChange}
+						/>
+						<Yield sliderValue={sliderValue} selectedStage={selectedStages.at(-1)} />
+					</>
 				) : (
 					<>
 						<YearSlider

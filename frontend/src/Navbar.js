@@ -14,7 +14,7 @@ const Navbar = (props) => {
 	return (
 		<div className="top-nav">
 			<div className="logo">MacroEconomics</div>
-			<div className="heading">Dashboard</div>
+			<div className="heading">Food Security Time Series Dashboard</div>
 			<div className="countries">
 				{["crops", "imports", "yield"].includes(props.category) ? (
 					""

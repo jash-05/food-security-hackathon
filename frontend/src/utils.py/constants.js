@@ -85,7 +85,7 @@ export const indicatorMappings = [
 				text: "Debt service (PPG and IMF only, % of exports of goods, services and primary income)",
 			},
 			{
-				key: "Total_Debt_Services",
+				key: "Total_Debt_Service",
 				text: "Total debt service (% of GNI)",
 			},
 			{
@@ -134,11 +134,11 @@ export const indicatorMappings = [
 		text: "Yield",
 		indicators: [
 			{
-				key: "Iran_Exports",
+				key: "Iran",
 				text: "Iran Exports",
 			},
 			{
-				key: "Philippines_Exports",
+				key: "Philippines",
 				text: "Philippines Exports",
 			},
 		],

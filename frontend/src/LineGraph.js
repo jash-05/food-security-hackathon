@@ -12,7 +12,6 @@ import {indicatorMappings} from "./utils.py/constants";
 const LineGraph = ({country, selectedStage, sliderValue}) => {
 	const [graphData, setGraphData] = useState([]);
 	const options = {
-		title: selectedStage.indicator,
 		title: indicatorMappings
 			.find((x) => x.key === selectedStage.category)
 			.indicators.find((x) => x.key === selectedStage.indicator).text,
