@@ -58,8 +58,8 @@ for folder in indicators:
                 print(row[0])
                 for i in range(4, len(row) - 1):
                     document = {
-                        'year': index[i],
-                        'value': row[i],
+                        'year': int(index[i]),
+                        'value': float(row[i]) if row[i] else 0.0,
                         'country': row[1]
                     }
                     all_documents.append(document)

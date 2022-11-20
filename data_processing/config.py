@@ -1,2 +1,2 @@
-USER: "testUser"
-PASS: "testPass"
+USER = "testUser"
+PASS = "testPass"
