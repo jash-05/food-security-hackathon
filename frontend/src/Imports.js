@@ -10,6 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import LineChart from "./LineChart";
 import axios from "axios";
+import {API_ENDPOINT} from "./utils.py/config";
 
 const Imports = ({ country }) => {
   const [year, setYear] = useState(2020);
@@ -31,7 +32,7 @@ const Imports = ({ country }) => {
     try {
       console.log(year, product, country);
       const res = await axios(
-        `http://localhost:3001/fetch-sankey-plot?year=${year}&product=${product}&country=${country}`
+        `${API_ENDPOINT}fetch-sankey-plot?year=${year}&product=${product}&country=${country}`
       );
       console.log(res.data);
 
