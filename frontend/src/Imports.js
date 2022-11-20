@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+/** @format */
+
+import React, {useState, useEffect} from "react";
 import PieChart from "./PieChart";
 import SankeyChart from "./SankeyChart";
 import Box from "@mui/material/Box";
@@ -9,7 +11,7 @@ import Select from "@mui/material/Select";
 import LineChart from "./LineChart";
 import axios from "axios";
 
-const Imports = ({ country }) => {
+const Imports = ({country}) => {
 	const [year, setYear] = useState(2020);
 	const [product, setProduct] = useState("Wheat");
 	const [data, setData] = useState();
@@ -26,7 +28,6 @@ const Imports = ({ country }) => {
 	const getChartData = async () => {
 		let newLabels = [];
 		let newPieData = [];
-		const country = "Egypt";
 		try {
 			console.log(year, product, country);
 			const res = await axios(
@@ -54,12 +55,9 @@ const Imports = ({ country }) => {
 		<div className="imports-wrapper">
 			<div className="selectors">
 				<div className="imports-year-dropdown">
-					<Box sx={{ minWidth: 150 }}>
+					<Box sx={{minWidth: 150}}>
 						<FormControl fullWidth>
-							<InputLabel
-								sx={{ fontSize: 24 }}
-								id="year-select-label"
-							>
+							<InputLabel sx={{fontSize: 24}} id="year-select-label">
 								Year
 							</InputLabel>
 							<Select
@@ -69,8 +67,7 @@ const Imports = ({ country }) => {
 								label="Year"
 								onChange={handleYearChange}
 								autoWidth
-								sx={{ fontSize: 24 }}
-							>
+								sx={{fontSize: 24}}>
 								<MenuItem value={2018}>2018</MenuItem>
 								<MenuItem value={2019}>2019</MenuItem>
 								<MenuItem value={2020}>2020</MenuItem>
@@ -80,12 +77,9 @@ const Imports = ({ country }) => {
 				</div>
 
 				<div className="import-products-dropdown">
-					<Box sx={{ minWidth: 150 }}>
+					<Box sx={{minWidth: 150}}>
 						<FormControl fullWidth>
-							<InputLabel
-								sx={{ fontSize: 24 }}
-								id="product-select-label"
-							>
+							<InputLabel sx={{fontSize: 24}} id="product-select-label">
 								Products
 							</InputLabel>
 							<Select
@@ -94,14 +88,9 @@ const Imports = ({ country }) => {
 								value={product}
 								label="Product"
 								onChange={handleProductChange}
-								sx={{ fontSize: 24 }}
-							>
+								sx={{fontSize: 24}}>
 								<MenuItem value={"Wheat"}>Wheat</MenuItem>
-								<MenuItem
-									value={
-										"Rice, paddy (rice milled equivalent)"
-									}
-								>
+								<MenuItem value={"Rice, paddy (rice milled equivalent)"}>
 									Rice
 								</MenuItem>
 								{/* <MenuItem value={"Corn"}>Corn</MenuItem> */}
@@ -115,7 +104,7 @@ const Imports = ({ country }) => {
 			</div>
 			<div className="imports-charts-wrapper">
 				<div className="sankey-chart-wrapper">
-					<SankeyChart data={data} country="Egypt" />
+					<SankeyChart data={data} country={country} />
 				</div>
 				<div className="pie-chart-wrapper">
 					<PieChart labels={labels} pieData={pieData} />

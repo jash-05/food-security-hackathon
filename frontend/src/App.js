@@ -78,7 +78,6 @@ function App() {
 					handleSliderChange={handleSliderChange}
 				/>
 			</div>
-			{/* <SankeyChart /> */}
 			{/* <Footer /> */}
 		</div>
 		// </DndProvider>
