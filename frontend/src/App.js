@@ -12,7 +12,13 @@ import { useState } from "react";
 import SankeyChart from "./SankeyChart";
 
 function App() {
-  //handle country navigation
+  const [persona, setPersona] = useState(true);
+
+  const switchPersona = (e) => {
+    console.log(e.target.checked);
+    setPersona(!persona);
+  };
+
   const [country, setCountry] = useState("us");
   const [selectedStages, setSelectedStages] = useState([]);
   const handleChange = (event) => {
@@ -57,12 +63,20 @@ function App() {
   return (
     // <DndProvider backend={HTML5Backend}>
     <div className="App">
-      <Navbar country={country} handleChange={() => handleChange} />
+      <Navbar
+        country={country}
+        persona={persona}
+        handleChange={() => handleChange}
+        handlePersona={() => switchPersona}
+      />
       <div className="body-wrapper">
         <LeftPanel addIndicatorToStage={addIndicatorToStage} />
-        <Stage country={country} selectedStages={selectedStages} />
+        <Stage
+          persona={persona}
+          country={country}
+          selectedStages={selectedStages}
+        />
       </div>
-      {/* <SankeyChart /> */}
       {/* <Footer /> */}
     </div>
     // </DndProvider>

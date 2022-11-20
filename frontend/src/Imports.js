@@ -50,7 +50,6 @@ const Imports = ({ country }) => {
 
   return (
     <div className="imports-wrapper">
-      <LineChart />
       <div className="selectors">
         <div className="imports-year-dropdown">
           <Box sx={{ minWidth: 150 }}>

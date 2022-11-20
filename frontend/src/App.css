@@ -74,7 +74,7 @@
 }
 
 .panel-buttons button {
-  width: 90%;
+  width: 80%;
   margin-bottom: 10px;
   text-align: center;
   font-size: 18px;
@@ -85,6 +85,20 @@
 .content-wrapper {
   /* background-color: aliceblue; */
   width: 85%;
+}
+
+.annotation-wrapper {
+  width: 10%;
+}
+.a-list {
+  width: 100%;
+  height: 500px;
+}
+.annotation-item {
+  border: 1px solid silver;
+  width: 120px;
+  border-radius: 10px;
+  word-wrap: normal;
 }
 
 /* Imports */
