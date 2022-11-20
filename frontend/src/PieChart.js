@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Pie } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
 Chart.register(ArcElement);
 
-const PieChart = () => {
+const PieChart = ({ labels, pieData }) => {
   const data = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    labels: labels,
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        label: "Wheat Import Quantity (tonnes)",
+        data: pieData,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
