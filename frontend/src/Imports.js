@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PieChart from "./PieChart";
 import SankeyChart from "./SankeyChart";
 import Box from "@mui/material/Box";
@@ -7,10 +7,11 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import LineChart from "./LineChart";
+import axios from "axios";
 
-const Imports = () => {
-  const [year, setYear] = useState("");
-  const [product, setProduct] = useState("");
+const Imports = ({ country }) => {
+  const [year, setYear] = useState(2020);
+  const [product, setProduct] = useState("Wheat");
 
   const handleYearChange = (event) => {
     setYear(event.target.value);
@@ -18,6 +19,34 @@ const Imports = () => {
   const handleProductChange = (event) => {
     setProduct(event.target.value);
   };
+  const [labels, setLabels] = useState([]);
+  const [pieData, setPieData] = useState([]);
+
+  const getChartData = async () => {
+    let newLabels = [];
+    let newPieData = [];
+    const country = "Egypt";
+    try {
+      console.log(year, product, country);
+      const res = await axios(
+        `http://localhost:3001/fetch-sankey-plot?year=${year}&product=${product}&country=${country}`
+      );
+      console.log(res.data);
+
+      for (const [key, value] of Object.entries(res?.data)) {
+        newLabels.push(key);
+        newPieData.push(value);
+      }
+      setLabels(newLabels);
+      setPieData(newPieData);
+    } catch (err) {
+      console.log("Error fetching Sankey Chart data" + err);
+    }
+  };
+
+  useEffect(() => {
+    getChartData();
+  }, [country, year, product]);
 
   return (
     <div className="imports-wrapper">
@@ -74,7 +103,7 @@ const Imports = () => {
       <div className="imports-charts-wrapper">
         <div className="sankey-chart-wrapper">{/* <SankeyChart /> */}</div>
         <div className="pie-chart-wrapper">
-          <PieChart />
+          <PieChart labels={labels} pieData={pieData} />
         </div>
       </div>
     </div>

@@ -4,31 +4,7 @@ import { Pie } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
 Chart.register(ArcElement);
 
-const PieChart = () => {
-  const [labels, setLabels] = useState([]);
-  const [pieData, setPieData] = useState([]);
-  const getChartData = async () => {
-    let newLabels = [];
-    let newPieData = [];
-    try {
-      const res = await axios(
-        "http://localhost:3001/fetch-sankey-plot?year=2019&product=Wheat&country=Egypt"
-      );
-      console.log(res.data);
-
-      for (const [key, value] of Object.entries(res?.data)) {
-        newLabels.push(key);
-        newPieData.push(value);
-      }
-      console.log(newLabels);
-      setLabels(newLabels);
-      setPieData(newPieData);
-    } catch (err) {}
-  };
-  useEffect(() => {
-    getChartData();
-  }, []);
-
+const PieChart = ({ labels, pieData }) => {
   const data = {
     labels: labels,
     datasets: [
@@ -52,7 +28,6 @@ const PieChart = () => {
           "rgba(255, 159, 64, 1)",
         ],
         borderWidth: 1,
-        title: ``,
       },
     ],
   };
