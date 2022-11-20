@@ -1,50 +1,27 @@
 /** @format */
-import Imports from "./Imports";
-import {React, useEffect, useState} from "react";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
-import {Chart} from "react-google-charts";
-import {yearLabels} from "./utils.py/constants";
+import {React, useEffect} from "react";
 import LineGraph from "./LineGraph";
+import YearSlider from "./YearSlider";
 
-const Stage = ({selectedStages}) => {
-	const [sliderValue, setSliderValue] = useState([1960, 2021]);
-	const handleSliderChange = (event, newValue) => {
-		setSliderValue(newValue);
-	};
-	const data = [
-		["Year", "Sales", "Expenses"],
-		["2004", 1000, 400],
-		["2005", 1170, 460],
-		["2006", 660, 1120],
-		["2007", 1030, 540],
-	];
-
-	const options = {
-		title: "Company Performance",
-		legend: {position: "bottom"},
-	};
+const Stage = ({country, selectedStages, sliderValue, handleSliderChange}) => {
 	useEffect(() => {
 		console.log("ONLY ONCE");
 	}, []);
 
+	console.log("Rendering Stage");
+	console.log("Country: " + JSON.stringify(country));
+	console.log("Selected stages: " + JSON.stringify(selectedStages));
 	return (
 		<div className="content-wrapper">
-			<Box sx={{width: 700}}>
-				<Slider
-					getAriaLabel={() => "Year range"}
-					value={sliderValue}
-					onChange={handleSliderChange}
-					valueLabelDisplay="auto"
-					step={1}
-					min={1960}
-					max={2021}
-					marks={yearLabels}
-				/>
-			</Box>
-
+			<YearSlider sliderValue={sliderValue} handleSliderChange={handleSliderChange} />
 			{selectedStages.map((selectedStage) => {
-				return <LineGraph selectedStage={selectedStage} />;
+				return (
+					<LineGraph
+						country={country}
+						selectedStage={selectedStage}
+						sliderValue={sliderValue}
+					/>
+				);
 			})}
 		</div>
 	);

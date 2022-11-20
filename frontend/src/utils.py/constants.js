@@ -126,3 +126,9 @@ export const yearLabels = [
 		label: 2021,
 	},
 ];
+
+export const countryMapping = {
+	USA: "us",
+	IND: "in",
+	CHN: "cn",
+};

@@ -10,11 +10,17 @@ import {HTML5Backend} from "react-dnd-html5-backend";
 import Dnd from "./Dnd";
 import {useState} from "react";
 import SankeyChart from "./SankeyChart";
+import {countries} from "react-circle-flags";
+import YearSlider from "./YearSlider";
 
 function App() {
 	//handle country navigation
-	const [country, setCountry] = useState("us");
+	const [country, setCountry] = useState("USA");
 	const [selectedStages, setSelectedStages] = useState([]);
+	const [sliderValue, setSliderValue] = useState([1960, 2021]);
+	const handleSliderChange = (event, newValue) => {
+		setSliderValue(newValue);
+	};
 	const handleChange = (event) => {
 		setCountry(event.target.value);
 	};
@@ -50,13 +56,21 @@ function App() {
 			}
 		}
 	};
+	console.log("Rendering APP");
+	console.log("Country: " + countries);
+	console.log("Selected stages: " + JSON.stringify(selectedStages));
 	return (
 		// <DndProvider backend={HTML5Backend}>
 		<div className="App">
 			<Navbar country={country} handleChange={() => handleChange} />
 			<div className="body-wrapper">
 				<LeftPanel addIndicatorToStage={addIndicatorToStage} />
-				<Stage country={country} selectedStages={selectedStages} />
+				<Stage
+					country={country}
+					selectedStages={selectedStages}
+					sliderValue={sliderValue}
+					handleSliderChange={handleSliderChange}
+				/>
 			</div>
 			<SankeyChart />
 			{/* <Footer /> */}
