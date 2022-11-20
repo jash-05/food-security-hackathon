@@ -1,0 +1,2 @@
+USER = "testUser"
+PASS = "testPass"
