@@ -87,6 +87,29 @@
   width: 85%;
 }
 
+/* Imports */
+.imports-charts-wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50px;
+}
+
+.selectors {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 40px;
+}
+
+.sankey-chart-wrapper {
+  width: 500px;
+  height: 500px;
+}
+.pie-chart-wrapper {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+}
+
 /* Footer */
 .footer {
   position: absolute;

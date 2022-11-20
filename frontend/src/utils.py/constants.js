@@ -1,3 +1,5 @@
+/** @format */
+
 export const indicatorMappings = [
 	{
 		eventKey: 0,
@@ -56,7 +58,7 @@ export const indicatorMappings = [
 				text: "Fertilizer consumption (kilograms per hectare of arable land)",
 			},
 			{
-				key: "Fertilizer_Consumption_Percentag",
+				key: "Fertilizer_Consumption_Percentage",
 				text: "Fertilizer consumption (% of fertilizer production)",
 			},
 		],
@@ -67,29 +69,60 @@ export const indicatorMappings = [
 		text: "Debt",
 		indicators: [
 			{
-				key: "Debt_Service",
+				key: "Total_Reserves_Months",
 				text: "Total reserves in months of imports",
 			},
 			{
-				key: "GNI",
+				key: "Total_Reserves_Gold",
 				text: "Total reserves (includes gold, current US$)",
 			},
 			{
-				key: "Total_Debt_Service",
+				key: "Total_Reserves_Percent",
 				text: "Total reserves (% of total external debt)",
 			},
 			{
-				key: "Total_Reserves_Gold",
+				key: "Debt_Service",
 				text: "Debt service (PPG and IMF only, % of exports of goods, services and primary income)",
 			},
 			{
-				key: "Total_Reserves_Months",
+				key: "Total_Debt_Services",
 				text: "Total debt service (% of GNI)",
 			},
 			{
-				key: "Total_Reserves_Percent",
+				key: "GNI",
 				text: "GNI (current US$)",
 			},
 		],
+	},
+];
+
+export const yearLabels = [
+	{
+		value: 1960,
+		label: 1960,
+	},
+	{
+		value: 1970,
+		label: 1970,
+	},
+	{
+		value: 1980,
+		label: 1980,
+	},
+	{
+		value: 1990,
+		label: 1990,
+	},
+	{
+		value: 2000,
+		label: 2000,
+	},
+	{
+		value: 2010,
+		label: 2010,
+	},
+	{
+		value: 2021,
+		label: 2021,
 	},
 ];
