@@ -79,7 +79,7 @@ const Navbar = (props) => {
           </Typography>
         </Stack>
       </div>
-      <div className="heading">Dashboard</div>
+      <div className="heading">Food Security Time Series Dashboard</div>
       <div className="countries">
         {["crops", "imports", "yield"].includes(props.category) ? (
           ""

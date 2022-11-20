@@ -5,6 +5,7 @@ import {
 	InfoWindow,
 	Marker,
 } from "@react-google-maps/api";
+import Button from 'react-bootstrap/Button';
 
 export const Banana = (props) => {
 	const [map, setMap] = useState(null);
@@ -90,7 +91,8 @@ export const Banana = (props) => {
 				paddingTop: "50px",
 			}}
 		>
-			<div>
+			<div style={{width: "500px"}}>
+				<div>Most bananas are grown in the south, mainly in Guandong, Guangxi, Yunnan and Hainan</div>
 				<GoogleMap
 					mapContainerStyle={{ width: "500px", height: "500px" }}
 					zoom={5}
@@ -114,8 +116,10 @@ export const Banana = (props) => {
 						</Marker>
 					))}
 				</GoogleMap>
+				<Button className="my-4" variant="primary">China</Button>
 			</div>
-			<div>
+			<div style={{width: "500px"}}>
+				<div>The major growing regions are Lampung, East Java, and West Java. Indonesian Papua in the east</div>
 				<GoogleMap
 					mapContainerStyle={{ width: "500px", height: "500px" }}
 					zoom={5}
@@ -138,7 +142,9 @@ export const Banana = (props) => {
 							) : null}
 						</Marker>
 					))}
+					
 				</GoogleMap>
+				<Button className="my-4" variant="primary">Indonesia</Button>
 			</div>
 		</div>
 	) : (

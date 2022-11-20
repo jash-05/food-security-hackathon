@@ -5,6 +5,7 @@ import {
 	InfoWindow,
 	Marker,
 } from "@react-google-maps/api";
+import Button from 'react-bootstrap/Button';
 
 export const Walnut = (props) => {
 	const [map, setMap] = useState(null);
@@ -95,7 +96,9 @@ export const Walnut = (props) => {
 				paddingTop: "50px",
 			}}
 		>
-			<div>
+			<div style={{width: "500px"}}>
+				<div>USA - major areas are San Joaquin and 
+Sacramento Valleys</div>
 				<GoogleMap
 					mapContainerStyle={{ width: "500px", height: "500px" }}
 					zoom={5}
@@ -119,8 +122,13 @@ export const Walnut = (props) => {
 						</Marker>
 					))}
 				</GoogleMap>
+				<Button className="my-4" variant="primary">California</Button>
 			</div>
-			<div>
+			<div style={{width: "500px"}}>
+				<div>Kerman, Kermanshah, Hamedan, Lorestan, 
+Kohgilouyeh-Boyerahmad , Khorasan Razavi, 
+Bakhtiari, Eastern and Western Azerbaijan and 
+Markazi</div>
 				<GoogleMap
 					mapContainerStyle={{ width: "500px", height: "500px" }}
 					zoom={5}
@@ -144,6 +152,7 @@ export const Walnut = (props) => {
 						</Marker>
 					))}
 				</GoogleMap>
+				<Button className="my-4" variant="primary">Iran</Button>
 			</div>
 		</div>
 	) : (

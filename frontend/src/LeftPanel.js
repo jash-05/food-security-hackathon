@@ -35,7 +35,11 @@ const LeftPanel = ({addIndicatorToStage}) => {
 														<ListItem disablePadding>
 															<Typography
 																sx={{
+																	width: "100%",
 																	m: 1,
+																	cursor: "pointer",
+																	"&:hover": {background: "#f1f1f1"},
+
 																}}
 																id={indicator.key}
 																data-category={category.key}

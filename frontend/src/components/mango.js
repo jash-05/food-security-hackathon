@@ -5,6 +5,7 @@ import {
 	InfoWindow,
 	Marker,
 } from "@react-google-maps/api";
+import Button from 'react-bootstrap/Button';
 
 export const Mango = (props) => {
 	const [map, setMap] = useState(null);
@@ -85,7 +86,11 @@ export const Mango = (props) => {
 				paddingTop: "50px",
 			}}
 		>
-			<div>
+			<div style={{width: "500px"}}>
+				<div>Philippines, the largest production areas are 
+Pangasinan in Luzon, West and Central Visas, 
+Davao Region, and Cotabato Province for 
+Mindanao</div>
 				<GoogleMap
 					mapContainerStyle={{ width: "500px", height: "500px" }}
 					zoom={5}
@@ -109,8 +114,11 @@ export const Mango = (props) => {
 						</Marker>
 					))}
 				</GoogleMap>
+				<Button className="my-4" variant="primary">Philippines</Button>
 			</div>
-			<div>
+			<div style={{width: "500px"}}>
+				<div>The major growing regions are 
+Andhra Pradesh</div>
 				<GoogleMap
 					mapContainerStyle={{ width: "500px", height: "500px" }}
 					zoom={5}
@@ -134,6 +142,7 @@ export const Mango = (props) => {
 						</Marker>
 					))}
 				</GoogleMap>
+				<Button className="my-4" variant="primary">India</Button>
 			</div>
 		</div>
 	) : (
