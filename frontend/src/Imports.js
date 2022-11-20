@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect } from "react";
 import PieChart from "./PieChart";
 import SankeyChart from "./SankeyChart";
@@ -26,7 +28,6 @@ const Imports = ({ country }) => {
   const getChartData = async () => {
     let newLabels = [];
     let newPieData = [];
-    const country = "Egypt";
     try {
       console.log(year, product, country);
       const res = await axios(
@@ -105,7 +106,7 @@ const Imports = ({ country }) => {
       </div>
       <div className="imports-charts-wrapper">
         <div className="sankey-chart-wrapper">
-          <SankeyChart data={data} country="Egypt" />
+          <SankeyChart data={data} country={country} />
         </div>
         <div className="pie-chart-wrapper">
           <PieChart labels={labels} pieData={pieData} />
