@@ -3,6 +3,10 @@ import {React, useEffect} from "react";
 import Imports from "./Imports";
 import LineGraph from "./LineGraph";
 import YearSlider from "./YearSlider";
+import {Banana} from "./components/banana";
+import {Mango} from "./components/mango";
+import {Walnut} from "./components/walnut";
+import SankeyChart from "./SankeyChart";
 
 const Stage = ({country, selectedStages, sliderValue, handleSliderChange}) => {
 	useEffect(() => {
@@ -14,17 +18,39 @@ const Stage = ({country, selectedStages, sliderValue, handleSliderChange}) => {
 	console.log("Selected stages: " + JSON.stringify(selectedStages));
 	return (
 		<div className="content-wrapper">
-			<YearSlider sliderValue={sliderValue} handleSliderChange={handleSliderChange} />
-			<Imports country={country} />
-			{selectedStages.map((selectedStage) => {
-				return (
-					<LineGraph
-						country={country}
-						selectedStage={selectedStage}
-						sliderValue={sliderValue}
-					/>
-				);
-			})}
+			{selectedStages.length ? (
+				selectedStages.at(-1).category === "crops" ? (
+					selectedStages.at(-1).indicator === "banana" ? (
+						<Banana crop={selectedStages.at(-1).indicator} />
+					) : selectedStages.at(-1).indicator === "mango" ? (
+						<Mango crop={selectedStages.at(-1).indicator} />
+					) : (
+						<Walnut crop={selectedStages.at(-1).indicator} />
+					)
+				) : selectedStages.at(-1).category === "imports" ? (
+					<Imports country={selectedStages.at(-1).indicator} />
+				) : selectedStages.at(-1).category === "yield" ? (
+					""
+				) : (
+					<>
+						<YearSlider
+							sliderValue={sliderValue}
+							handleSliderChange={handleSliderChange}
+						/>
+						{selectedStages.map((selectedStage) => {
+							return (
+								<LineGraph
+									country={country}
+									selectedStage={selectedStage}
+									sliderValue={sliderValue}
+								/>
+							);
+						})}
+					</>
+				)
+			) : (
+				""
+			)}
 		</div>
 	);
 };

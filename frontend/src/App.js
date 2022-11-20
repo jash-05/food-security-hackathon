@@ -25,8 +25,10 @@ function App() {
 		setCountry(event.target.value);
 	};
 	const addIndicatorToStage = (category, indicator) => {
-		console.log("Adding " + indicator + " to stages: " + selectedStages);
-		if (!selectedStages.length) {
+		console.log(
+			"Adding " + indicator + " with category " + category + " to stages: " + selectedStages
+		);
+		if (!selectedStages.length || ["crops", "imports", "yield"].includes(category)) {
 			setSelectedStages([
 				{
 					category,
@@ -62,7 +64,11 @@ function App() {
 	return (
 		// <DndProvider backend={HTML5Backend}>
 		<div className="App">
-			<Navbar country={country} handleChange={() => handleChange} />
+			<Navbar
+				country={country}
+				category={selectedStages.length ? selectedStages[0].category : ""}
+				handleChange={() => handleChange}
+			/>
 			<div className="body-wrapper">
 				<LeftPanel addIndicatorToStage={addIndicatorToStage} />
 				<Stage
@@ -72,7 +78,7 @@ function App() {
 					handleSliderChange={handleSliderChange}
 				/>
 			</div>
-			<SankeyChart />
+			{/* <SankeyChart /> */}
 			{/* <Footer /> */}
 		</div>
 		// </DndProvider>

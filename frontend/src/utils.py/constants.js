@@ -94,6 +94,55 @@ export const indicatorMappings = [
 			},
 		],
 	},
+	{
+		eventKey: 3,
+		key: "crops",
+		text: "Specialty Crops",
+		indicators: [
+			{
+				key: "banana",
+				text: "Bananas",
+			},
+			{
+				key: "mango",
+				text: "Mangoes",
+			},
+			{
+				key: "walnut",
+				text: "Walnuts",
+			},
+		],
+	},
+	{
+		eventKey: 4,
+		key: "imports",
+		text: "Imports",
+		indicators: [
+			{
+				key: "Saudi Arabia",
+				text: "Saudi Arabia Imports",
+			},
+			{
+				key: "Egypt",
+				text: "Egypt Imports",
+			},
+		],
+	},
+	{
+		eventKey: 5,
+		key: "yield",
+		text: "Yield",
+		indicators: [
+			{
+				key: "Iran_Exports",
+				text: "Iran Exports",
+			},
+			{
+				key: "Philippines_Exports",
+				text: "Philippines Exports",
+			},
+		],
+	},
 ];
 
 export const yearLabels = [
