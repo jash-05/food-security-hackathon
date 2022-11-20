@@ -1,5 +1,5 @@
 /** @format */
-import {React, useEffect} from "react";
+import { React, useEffect, useState } from "react";
 import Imports from "./Imports";
 import LineGraph from "./LineGraph";
 import YearSlider from "./YearSlider";
@@ -9,10 +9,16 @@ import {Walnut} from "./components/walnut";
 import SankeyChart from "./SankeyChart";
 import Yield from "./Yield";
 
-const Stage = ({country, selectedStages, sliderValue, handleSliderChange}) => {
-	useEffect(() => {
-		console.log("ONLY ONCE");
-	}, []);
+const Stage = ({
+  persona,
+  country,
+  selectedStages,
+  sliderValue,
+  handleSliderChange,
+}) => {
+  useEffect(() => {
+    console.log("ONLY ONCE");
+  }, []);
 
 	console.log("Rendering Stage");
 	console.log("Country: " + JSON.stringify(country));
