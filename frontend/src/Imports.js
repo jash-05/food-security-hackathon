@@ -12,6 +12,7 @@ import axios from "axios";
 const Imports = ({ country }) => {
   const [year, setYear] = useState(2020);
   const [product, setProduct] = useState("Wheat");
+  const [data, setData] = useState();
 
   const handleYearChange = (event) => {
     setYear(event.target.value);
@@ -37,6 +38,7 @@ const Imports = ({ country }) => {
         newLabels.push(key);
         newPieData.push(value);
       }
+      setData(res.data);
       setLabels(newLabels);
       setPieData(newPieData);
     } catch (err) {
@@ -66,9 +68,9 @@ const Imports = ({ country }) => {
                 autoWidth
                 sx={{ fontSize: 24 }}
               >
+                <MenuItem value={2018}>2018</MenuItem>
                 <MenuItem value={2019}>2019</MenuItem>
                 <MenuItem value={2020}>2020</MenuItem>
-                <MenuItem value={2021}>2021</MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -89,18 +91,22 @@ const Imports = ({ country }) => {
                 sx={{ fontSize: 24 }}
               >
                 <MenuItem value={"Wheat"}>Wheat</MenuItem>
-                <MenuItem value={"Rice"}>Rice</MenuItem>
-                <MenuItem value={"Corn"}>Corn</MenuItem>
-                <MenuItem value={"Walnut"}>Walnut</MenuItem>
-                <MenuItem value={"Banana"}>Banana</MenuItem>
-                <MenuItem value={"Mango"}>Mango</MenuItem>
+                <MenuItem value={"Rice, paddy (rice milled equivalent)"}>
+                  Rice
+                </MenuItem>
+                {/* <MenuItem value={"Corn"}>Corn</MenuItem> */}
+                {/* <MenuItem value={"Walnut"}>Walnut</MenuItem> */}
+                <MenuItem value={"Bananas"}>Banana</MenuItem>
+                {/* <MenuItem value={"Mango"}>Mango</MenuItem> */}
               </Select>
             </FormControl>
           </Box>
         </div>
       </div>
       <div className="imports-charts-wrapper">
-        <div className="sankey-chart-wrapper">{/* <SankeyChart /> */}</div>
+        <div className="sankey-chart-wrapper">
+          <SankeyChart data={data} country="Egypt" />
+        </div>
         <div className="pie-chart-wrapper">
           <PieChart labels={labels} pieData={pieData} />
         </div>

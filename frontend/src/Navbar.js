@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import Switch from "@mui/material/Switch";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { countryMapping } from "./utils.py/constants";
 
 const Navbar = (props) => {
   const { country, handleChange, persona, handlePersona } = props;
@@ -80,25 +81,30 @@ const Navbar = (props) => {
       </div>
       <div className="heading">Dashboard</div>
       <div className="countries">
-        <FormControl sx={{ m: 1, width: "150px" }}>
-          <InputLabel id="demo-simple-select-autowidth-label">
-            Country
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-autowidth-label"
-            id="demo-simple-select-autowidth"
-            value={country}
-            onChange={handleChange()}
-            autoWidth
-            label="Country"
-          >
-            <MenuItem value={"us"}>USA</MenuItem>
-            <MenuItem value={"in"}>India</MenuItem>
-            <MenuItem value={"cn"}>China</MenuItem>
-          </Select>
-        </FormControl>
-
-        <CircleFlag countryCode={country} height={70} />
+        {["crops", "imports", "yield"].includes(props.category) ? (
+          ""
+        ) : (
+          <>
+            <FormControl sx={{ m: 1, width: "150px" }}>
+              <InputLabel id="demo-simple-select-autowidth-label">
+                Country
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-autowidth-label"
+                id="demo-simple-select-autowidth"
+                value={country}
+                onChange={handleChange()}
+                autoWidth
+                label="Country"
+              >
+                <MenuItem value={"USA"}>USA</MenuItem>
+                <MenuItem value={"IND"}>India</MenuItem>
+                <MenuItem value={"CHN"}>China</MenuItem>
+              </Select>
+            </FormControl>
+            <CircleFlag countryCode={countryMapping[country]} height={70} />
+          </>
+        )}
       </div>
     </div>
   );

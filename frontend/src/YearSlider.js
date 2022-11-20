@@ -1,25 +1,32 @@
-import React from "react";
+/** @format */
+import { React } from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import { yearLabels } from "./utils.py/constants";
 
-const YearSlider = () => {
-  const [value, setValue] = React.useState([0, 100]);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+const YearSlider = ({ sliderValue, handleSliderChange }) => {
   return (
-    <Box sx={{ width: 300 }}>
-      <Slider
-        getAriaLabel={() => "Year range"}
-        value={value}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        min={1960}
-        max={2021}
-      />
-    </Box>
+    <div className="content-wrapper">
+      <Box
+        sx={{
+          width: 700,
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: "30px",
+        }}
+      >
+        <Slider
+          getAriaLabel={() => "Year range"}
+          value={sliderValue}
+          onChange={handleSliderChange}
+          valueLabelDisplay="auto"
+          step={1}
+          min={1960}
+          max={2021}
+          marks={yearLabels}
+        />
+      </Box>
+    </div>
   );
 };
 

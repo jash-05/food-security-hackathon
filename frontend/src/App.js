@@ -10,6 +10,8 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import Dnd from "./Dnd";
 import { useState } from "react";
 import SankeyChart from "./SankeyChart";
+import { countries } from "react-circle-flags";
+import YearSlider from "./YearSlider";
 
 function App() {
   const [persona, setPersona] = useState(true);
@@ -19,14 +21,28 @@ function App() {
     setPersona(!persona);
   };
 
-  const [country, setCountry] = useState("us");
+  const [country, setCountry] = useState("USA");
   const [selectedStages, setSelectedStages] = useState([]);
+  const [sliderValue, setSliderValue] = useState([1960, 2021]);
+  const handleSliderChange = (event, newValue) => {
+    setSliderValue(newValue);
+  };
   const handleChange = (event) => {
     setCountry(event.target.value);
   };
   const addIndicatorToStage = (category, indicator) => {
-    console.log("Adding " + indicator + " to stages: " + selectedStages);
-    if (!selectedStages.length) {
+    console.log(
+      "Adding " +
+        indicator +
+        " with category " +
+        category +
+        " to stages: " +
+        selectedStages
+    );
+    if (
+      !selectedStages.length ||
+      ["crops", "imports", "yield"].includes(category)
+    ) {
       setSelectedStages([
         {
           category,
@@ -60,14 +76,18 @@ function App() {
       }
     }
   };
+  console.log("Rendering APP");
+  console.log("Country: " + countries);
+  console.log("Selected stages: " + JSON.stringify(selectedStages));
   return (
     // <DndProvider backend={HTML5Backend}>
     <div className="App">
       <Navbar
-        country={country}
         persona={persona}
         handleChange={() => handleChange}
         handlePersona={() => switchPersona}
+        country={country}
+        category={selectedStages.length ? selectedStages[0].category : ""}
       />
       <div className="body-wrapper">
         <LeftPanel addIndicatorToStage={addIndicatorToStage} />
@@ -75,8 +95,11 @@ function App() {
           persona={persona}
           country={country}
           selectedStages={selectedStages}
+          sliderValue={sliderValue}
+          handleSliderChange={handleSliderChange}
         />
       </div>
+      {/* <SankeyChart /> */}
       {/* <Footer /> */}
     </div>
     // </DndProvider>

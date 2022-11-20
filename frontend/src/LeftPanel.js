@@ -17,7 +17,7 @@ const LeftPanel = ({addIndicatorToStage}) => {
 		<div className="panel-wrapper">
 			<div className="panel-dropdowns">
 				<Accordion defaultActiveKey="0">
-					{indicatorMappings.map((category) => {
+					{indicatorMappings.slice(0, 4).map((category) => {
 						return (
 							<Accordion.Item eventKey={category.eventKey}>
 								<Accordion.Header>{category.text}</Accordion.Header>
@@ -58,15 +58,54 @@ const LeftPanel = ({addIndicatorToStage}) => {
 							</Accordion.Item>
 						);
 					})}
-					<Accordion.Item eventKey="3">
-						<Accordion.Header>Crops</Accordion.Header>
-						<Accordion.Body></Accordion.Body>
-					</Accordion.Item>
 				</Accordion>
 			</div>
 			<div className="panel-buttons">
-				<Button variant="outlined">Import/Export</Button>
-				<Button variant="outlined">Yield</Button>
+				<Accordion defaultActiveKey="0">
+					{indicatorMappings.slice(4, 6).map((category) => {
+						return (
+							<Accordion.Item eventKey={category.eventKey}>
+								<Accordion.Header>{category.text}</Accordion.Header>
+								<Accordion.Body>
+									<Box
+										sx={{
+											width: "100%",
+											maxWidth: 380,
+											bgcolor: "background.paper",
+										}}>
+										<nav aria-label={category.key + "-items"}>
+											<List>
+												{category.indicators.map((indicator) => {
+													return (
+														<ListItem disablePadding>
+															<Typography
+																sx={{
+																	m: 1,
+																}}
+																id={indicator.key}
+																data-category={category.key}
+																onClick={(e) => {
+																	console.log(e);
+																	addIndicatorToStage(
+																		e.target.dataset.category,
+																		e.target.id
+																	);
+																}}>
+																{indicator.text}
+															</Typography>
+														</ListItem>
+													);
+												})}
+											</List>
+										</nav>
+									</Box>
+								</Accordion.Body>
+							</Accordion.Item>
+						);
+					})}
+				</Accordion>
+				{/* <Button variant="outlined">Import/Export</Button>
+				<Button variant="outlined">Yield</Button> */}
 			</div>
 		</div>
 	);

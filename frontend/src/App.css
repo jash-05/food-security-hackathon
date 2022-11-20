@@ -115,8 +115,9 @@
 }
 
 .sankey-chart-wrapper {
-  width: 500px;
+  width: 700px;
   height: 500px;
+  border: 1px solid black;
 }
 .pie-chart-wrapper {
   width: 500px;
