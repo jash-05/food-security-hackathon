@@ -1,12 +1,28 @@
 import "./App.css";
-import { GoogleMaps } from "./components/googleMaps";
+import Footer from "./Footer";
+import LeftPanel from "./LeftPanel";
+import Navbar from "./Navbar";
+import Stage from "./Stage";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import Dnd from "./Dnd";
+import SankeyChart from "./SankeyChart";
 
 function App() {
-	return (
-		<div className="App">
-			<GoogleMaps />
-		</div>
-	);
+  return (
+    // <DndProvider backend={HTML5Backend}>
+    <div className="App">
+      <Navbar />
+
+      <div className="body-wrapper">
+        <LeftPanel />
+        <Stage />
+      </div>
+      <SankeyChart />
+      <Footer />
+    </div>
+    // </DndProvider>
+  );
 }
 
 export default App;

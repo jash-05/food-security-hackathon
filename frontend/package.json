@@ -5,6 +5,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.14",
+    "@nivo/sankey": "^0.80.0",
     "@googlemaps/react-wrapper": "^1.1.35",
     "@mui/material": "^5.10.14",
     "@react-google-maps/api": "^2.17.0",
@@ -13,10 +15,18 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.1.3",
     "bootstrap": "^5.2.2",
+    "flag-icons": "^6.6.6",
+    "material-ui-flags": "^1.2.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
+    "react-circle-flags": "^0.0.18",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
+    "react-sankey-chart": "^1.0.8",
     "react-scripts": "5.0.1",
+    "react-switch": "^7.0.0",
+    "react-switch-selector": "^2.2.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
