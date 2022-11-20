@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Imports from "./Imports";
 
 const Stage = () => {
   return (
-    <div className='content-wrapper'>
-        
+    <div className="content-wrapper">
+      <Imports />
     </div>
-  )
-}
+  );
+};
 
-export default Stage
+export default Stage;

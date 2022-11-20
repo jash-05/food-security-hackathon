@@ -26,7 +26,11 @@ const LeftPanel = () => {
                 <nav aria-label="macroeconmoics-items">
                   <List>
                     <ListItem disablePadding>
-                      <ListItemButton>
+                      <ListItemButton
+                        onClick={() => {
+                          console.log("1");
+                        }}
+                      >
                         <ListItemText primary="Graph 1" />
                       </ListItemButton>
                     </ListItem>
